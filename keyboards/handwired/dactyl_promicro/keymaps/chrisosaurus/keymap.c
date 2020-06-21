@@ -11,7 +11,8 @@
  * MO(_RAISE) -> activates layer while held (momentary)
  * OSL(_RAISE) -> activates layer for 1 key press (one shot layer)
  * TG(_RAISE) -> toggle layer on/off
- * OSM(MOD)   -> when pressed activiates modifier for next key press
+ * OSM(MOD_LSFT) -> when pressed activiates modifier for next key press
+ * MT(mod, kc) -> mod when held, kc when tapped
  */
 
 /* change default to qwerty */
@@ -23,7 +24,9 @@
 /* toggle lower */
 #define TG_LOW TG(_LOWER)
 /* activate shift for next keypress */
-#define OS_LSFT OSM(KC_LSFT)
+#define OS_LSFT OSM(MOD_LSFT)
+/* esc when pressed, alt when held */
+#define ESCALT MT(MOD_LALT, KC_ESC)
 
 /*
  * KC_MS_UP    -> Mouse Cursor Up
@@ -46,11 +49,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_EQL , KC_1  ,KC_2   , KC_3  , KC_4  , KC_5  ,                                        KC_6   , KC_7  , KC_8  , KC_9  , KC_0  ,KC_MINS,
 
         KC_TAB , KC_Q  ,KC_W   , KC_E  , KC_R  , KC_T  ,                                        KC_Y   , KC_U  , KC_I  , KC_O  , KC_P  ,KC_BSLS,
-        KC_ESC , KC_A  ,KC_S   , KC_D  , KC_F  , KC_G  ,                                        KC_H   , KC_J  , KC_K  , KC_L  ,KC_SCLN,KC_QUOT,
+        ESCALT, KC_A  ,KC_S   , KC_D  , KC_F  , KC_G  ,                                        KC_H   , KC_J  , KC_K  , KC_L  ,KC_SCLN,KC_QUOT,
         KC_LSFT, KC_Z  ,KC_X   , KC_C  , KC_V  , KC_B  ,                                        KC_N   , KC_M  ,KC_COMM, KC_DOT,KC_SLSH,KC_RSFT,
 
         OS_LSFT, KC_GRV,MO_LOW ,KC_LEFT,KC_RGHT,KC_BSPC,                                        KC_SPC , KC_UP ,KC_DOWN,KC_LBRC,KC_RBRC,TG_LOW ,
-                                                KC_LSFT,KC_LGUI,KC_LCTL,        KC_LALT,KC_RGUI,KC_ENT ,
+                                                KC_LSFT,KC_LGUI,KC_LCTL,        KC_LCTL,KC_RGUI,KC_ENT ,
                                                                 KC_HOME,        KC_PGUP,
                                                                 KC_END ,        KC_PGDN
     ),
@@ -59,11 +62,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_EQL , KC_1  ,KC_2   , KC_3  , KC_4  , KC_5  ,                                        KC_6   , KC_7  , KC_8  , KC_9  , KC_0  ,KC_MINS,
 
         KC_TAB , KC_Q  ,KC_W   , KC_F  , KC_P  , KC_G  ,                                        KC_J   , KC_L  , KC_V  , KC_Y  ,KC_SCLN,KC_BSLS,
-        KC_ESC , KC_A  ,KC_R   , KC_S  , KC_T  , KC_D  ,                                        KC_H   , KC_N  , KC_E  , KC_I  , KC_O  ,KC_QUOT,
+        ESCALT, KC_A  ,KC_R   , KC_S  , KC_T  , KC_D  ,                                        KC_H   , KC_N  , KC_E  , KC_I  , KC_O  ,KC_QUOT,
         KC_LSFT, KC_Z  ,KC_X   , KC_C  , KC_V  , KC_B  ,                                        KC_K   , KC_M  ,KC_COMM, KC_DOT,KC_SLSH,KC_RSFT,
 
         OS_LSFT, KC_GRV,MO_LOW ,KC_LEFT,KC_RGHT,KC_BSPC,                                        KC_SPC , KC_UP ,KC_DOWN,KC_LBRC,KC_RBRC,TG_LOW ,
-                                                KC_LSFT,KC_LGUI,KC_LCTL,        KC_LALT,KC_RGUI,KC_ENT ,
+                                                KC_LSFT,KC_LGUI,KC_LCTL,        KC_LCTL,KC_RGUI,KC_ENT ,
                                                                 KC_HOME,        KC_PGUP,
                                                                 KC_END ,        KC_PGDN
     ),
@@ -73,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,DF_QWE ,_______,_______,_______,_______,                                       _______,_______,_______,_______,_______,_______,
         _______,DF_COL ,_______,_______,_______,_______,                                       MS_L   ,MS_D   ,MS_U   ,MS_R   ,_______,_______,
         _______,_______,_______,_______,_______,_______,                                       _______,_______,_______,_______,_______,_______,
-        _______,_______,_______,MS_L   ,MS_R   ,_______,                                       MS_B2  ,MS_U   ,MS_D   ,_______,_______,TG_LOW ,
+        _______,_______,_______,MS_L   ,MS_R   ,_______,                                       MS_B2  ,MS_U   ,MS_D   ,_______,_______,_______,
                                                 _______,_______,_______,       _______,_______,MS_B1  ,
                                                                 _______,       _______,
                                                                 _______,       _______
