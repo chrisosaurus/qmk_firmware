@@ -66,9 +66,34 @@
  *          holding V isn't useful in Vim currently
  */
 
-#define SIMPLE 1
+/* ifdefs to show/hide different configs */
+/* configs to pick from */
+/* CONFIG_MODE_QWERTY_ONLY is a qwerty layer with no one shots, no layers or modes */
+#define CONFIG_MODE_QWERTY_ONLY 1
+/* CONFIG_MODE_SIMPLE is _QWERTY, _COLEMAK, and basic mouse controls */
+#define CONFIG_MODE_SIMPLE      2
 
-#if SIMPLE
+/* pick which config you want */
+#define CONFIG_MODE CONFIG_MODE_SIMPLE
+
+/* untested. */
+#if CONFIG_MODE == CONFIG_MODE_QWERTY_ONLY
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    [_QWERTY] = LAYOUT_6x6(
+        KC_EQL , KC_1  ,KC_2   , KC_3  , KC_4  , KC_5  ,                                        KC_6   , KC_7  , KC_8  , KC_9  , KC_0  ,KC_MINS,
+
+        KC_TAB , KC_Q  ,KC_W   , KC_E  , KC_R  , KC_T  ,                                        KC_Y   , KC_U  , KC_I  , KC_O  , KC_P  ,KC_BSLS,
+        ESCALT , KC_A  ,KC_S   , KC_D  , KC_F  , KC_G  ,                                        KC_H   , KC_J  , KC_K  , KC_L  ,KC_SCLN,KC_QUOT,
+        KC_LSFT, KC_Z  ,KC_X   , KC_C  , KC_V  , KC_B  ,                                        KC_N   , KC_M  ,KC_COMM, KC_DOT,KC_SLSH,KC_RSFT,
+
+        XXXXXXX, KC_GRV,XXXXXXX,KC_LEFT,KC_RGHT,KC_BSPC,                                        KC_SPC , KC_UP ,KC_DOWN,KC_LBRC,KC_RBRC,XXXXXXX,
+                                                KC_LSFT,KC_LGUI,KC_LCTL,        KC_LCTL,KC_RGUI,KC_ENT ,
+                                                                KC_HOME,        KC_PGUP,
+                                                                KC_END ,        KC_PGDN
+    )
+};
+
+#elif CONFIG_MODE == CONFIG_MODE_SIMPLE
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWERTY] = LAYOUT_6x6(
         KC_EQL , KC_1  ,KC_2   , KC_3  , KC_4  , KC_5  ,                                        KC_6   , KC_7  , KC_8  , KC_9  , KC_0  ,KC_MINS,
@@ -107,5 +132,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                 _______,       _______
     )
 };
-#endif // SIMPLE
+
+#else
+"Error: unrecognised CONFIG_MODE"
+#endif
 
