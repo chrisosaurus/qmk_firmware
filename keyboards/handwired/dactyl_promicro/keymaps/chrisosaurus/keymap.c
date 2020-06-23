@@ -195,40 +195,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                 _______,       _______
     ),
 
-#if 0
-    /* unloved first-pass at symbols layer */
-
-    /* based on QWERTY we have a layer mapping these positions to symbols
-     * yY  uU  iI  oO pP
-     *
-     *
-     * hH  jJ  kK  lL ;:
-     * =+  `~  /?  \| '"
-     *
-     * nN  mM  ,<  .>
-     *     -_  [{  ]}
-     *
-     * this may still be too heavy on pinky, so we may want to move ;: and '"
-     * elsewhere, but this is a decent first pass.
-     */
-
-    [_QWERTY_SYMBOLS] = LAYOUT_6x6(
-        _______,_______,_______,_______,_______,_______,                                       _______,_______,_______,_______,_______,_______,
-
-        /*         q       w       e       r       t                                              y       u      i        o       p          */
-        _______,_______,_______,_______,_______,_______,                                       _______,_______,_______,_______,_______,_______,
-        /*         a       s       d       f       g                                              h       j      k        l       ;          */
-        _______,_______,_______,_______,_______,_______,                                       KC_EQL ,KC_GRV ,KC_SLSH,KC_BSLS,KC_QUOT ,_______,
-        /*         z       x       c       v       b                                              n       m      ,        .       /          */
-        _______,_______,_______,_______,_______,_______,                                       _______,KC_MINS,KC_LBRC,KC_RBRC,_______,_______,
-
-        _______,_______,_______,_______,_______,_______,                                       _______,_______,_______,_______,_______,_______,
-                                                _______,_______,_______,       _______,_______,_______,
-                                                                _______,       _______,
-                                                                _______,       _______
-    ),
-
-#endif
     /* improved second-pass at symbols layer */
 
     /* based on QWERTY we have a layer mapping these positions to symbols
