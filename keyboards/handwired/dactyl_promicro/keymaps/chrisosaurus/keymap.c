@@ -157,7 +157,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         ESCALT , KC_A  ,KC_S   , KC_D  , KC_F  , KC_G  ,                                        KC_H   , KC_J  , KC_K  , KC_L  ,KC_SCLN,KC_QUOT,
         OS_LSFT, KC_Z  ,KC_X   ,LTC_SYM,LTV_RHS, KC_B  ,                                        KC_N   ,LTM_LHH,KC_COMM, KC_DOT,KC_SLSH,OS_RSFT,
 
-        KC_LSFT, KC_GRV,MO_LOW ,KC_LEFT,KC_RGHT,KC_BSPC,                                        KC_SPC , KC_UP ,KC_DOWN,KC_LBRC,KC_RBRC,TG_LOW ,
+// previous version with MO_LOW and TG_LOW
+//      KC_LSFT, KC_GRV,MO_LOW ,KC_LEFT,KC_RGHT,KC_BSPC,                                        KC_SPC , KC_UP ,KC_DOWN,KC_LBRC,KC_RBRC,TG_LOW ,
+// not currently using lower layer, TG_LOW rightly causes a crash
+        KC_LSFT, KC_GRV,XXXXXXX,KC_LEFT,KC_RGHT,KC_BSPC,                                        KC_SPC , KC_UP ,KC_DOWN,KC_LBRC,KC_RBRC,XXXXXXX,
                                                 KC_LSFT,KC_LGUI,KC_LCTL,        KC_LCTL,KC_RGUI,KC_ENT ,
                                                                 KC_HOME,        KC_PGUP,
                                                                 KC_END ,        KC_PGDN
