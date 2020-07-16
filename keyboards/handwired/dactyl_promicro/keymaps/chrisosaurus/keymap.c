@@ -85,10 +85,14 @@
 #define _CONFIG_MODE_QWERTY_ONLY 1
 /* CONFIG_MODE_SIMPLE is _QWERTY, _COLEMAK, and basic mouse controls */
 #define _CONFIG_MODE_SIMPLE      2
+/* enforces correct use of shift keys - left shift for RHS and vice versa */
 #define _CONFIG_MODE_SHIFT_ENFORCER 3
+/* Juka's key layout */
+#define _CONFIG_MODE_JUKA 4
 
 /* pick which config you want */
-#define _CONFIG_MODE _CONFIG_MODE_SHIFT_ENFORCER
+//define _CONFIG_MODE _CONFIG_MODE_SHIFT_ENFORCER
+#define _CONFIG_MODE _CONFIG_MODE_JUKA
 
 /* untested. */
 #if _CONFIG_MODE == _CONFIG_MODE_QWERTY_ONLY
@@ -269,6 +273,55 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                                 _______,       _______
     ),
 #endif
+};
+
+#elif _CONFIG_MODE == _CONFIG_MODE_JUKA
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    [_QWERTY] = LAYOUT_6x6(
+        KC_EQL , KC_1  ,KC_2   , KC_3  , KC_4  , KC_5  ,                                        KC_6   , KC_7  , KC_8  , KC_9  , KC_0  ,KC_MINS,
+
+        KC_TAB , KC_Q  ,KC_W   , KC_E  , KC_R  , KC_T  ,                                        KC_Y   , KC_U  , KC_I  , KC_O  , KC_P  ,KC_BSLS,
+        ESCALT , KC_A  ,KC_S   , KC_D  , KC_F  , KC_G  ,                                        KC_H   , KC_J  , KC_K  , KC_L  ,KC_SCLN,KC_QUOT,
+        OS_LSFT, KC_Z  ,KC_X   , KC_C  ,LTV_RHS, KC_B  ,                                        KC_N   ,LTM_LHH,KC_COMM, KC_DOT,KC_SLSH,OS_RSFT,
+
+        KC_DEL , KC_GRV,XXXXXXX,KC_LEFT,KC_RGHT,KC_BSPC,                                        KC_SPC , KC_UP ,KC_DOWN,KC_LBRC,KC_RBRC,XXXXXXX,
+                                                KC_LSFT,KC_LGUI,KC_LCTL,        KC_RCTL,KC_RALT,KC_ENT ,
+                                                                KC_HOME,        KC_PGUP,
+                                                                KC_END ,        KC_PGDN
+    ),
+
+    [_QWERTY_RHS_UPPER] = LAYOUT_6x6(
+        _______,_______,_______,_______,_______,_______,                                       S_KC(6),S_KC(7),S_KC(8)   ,S_KC(9)   ,S_KC(0)   ,S_KC(MINS),
+
+        /*         q       w       e       r       t                                              y       u      i          o          p                  */
+        _______,_______,_______,_______,_______,_______,                                       S_KC(Y),S_KC(U),S_KC(I)   ,S_KC(O)   ,S_KC(P)   ,S_KC(BSLS),
+        /*         a       s       d       f       g                                              h       j      k          l          ;                  */
+        _______,_______,_______,_______,_______,_______,                                       S_KC(H),S_KC(J),S_KC(K)   ,S_KC(L)   ,S_KC(SCLN),S_KC(QUOT),
+        /*         z       x       c       v       b                                              n       m      ,          .          /                  */
+        _______,_______,_______,_______,_______,_______,                                       S_KC(N),S_KC(M),S_KC(COMM),S_KC(DOT) ,S_KC(SLSH),_______,
+
+        _______,_______,_______,_______,_______,_______,                                       _______,_______,_______   ,S_KC(LBRC),S_KC(RBRC),_______,
+                                                _______,_______,_______,       _______,_______,_______,
+                                                                _______,       _______,
+                                                                _______,       _______
+    ),
+
+    [_QWERTY_LHS_UPPER] = LAYOUT_6x6(
+      S_KC(EQL),S_KC(1),S_KC(2),S_KC(3),S_KC(4),S_KC(5),                                       _______,_______,_______,_______,_______,_______,
+
+        /*         q       w       e       r       t                                              y       u      i        o       p          */
+        _______,S_KC(Q),S_KC(W),S_KC(E),S_KC(R),S_KC(T),                                       _______,_______,_______,_______,_______,_______,
+        /*         a       s       d       f       g                                              h       j      k        l       ;          */
+        _______,S_KC(A),S_KC(S),S_KC(D),S_KC(F),S_KC(G),                                       _______,_______,_______,_______,_______,_______,
+        /*         z       x       c       v       b                                              n       m      ,        .       /          */
+        _______,S_KC(Z),S_KC(X),S_KC(C),S_KC(V),S_KC(B),                                       _______,_______,_______,_______,_______,_______,
+
+      _______,S_KC(GRV),_______,_______,_______,_______,                                       _______,_______,_______,_______,_______,_______,
+                                                _______,_______,_______,       _______,_______,_______,
+                                                                _______,       _______,
+                                                                _______,       _______
+    ),
+
 };
 
 #else
